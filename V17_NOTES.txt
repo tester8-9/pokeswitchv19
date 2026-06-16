@@ -1,0 +1,13 @@
+SWSH AI Bridge V17 - AMX-inspired hybrid / row-specific switch scoring
+
+Main change from V16:
+- V16 used the candidate-state switch-in pointer as a single switch-in species for the whole candidate table.
+- V17 scores switch candidates per action row.
+- Based on the action mapping tests, V17 treats action IDs as likely trainer party slots for Ian's known team:
+  action 2 -> Conkeldurr
+  action 3 -> Lucario
+  action 4 -> Pangoro
+- This means Lucario-specific penalties no longer suppress every switch row if another row may be a better switch-in.
+
+This is still a hybrid scorer, not a complete port of btl_ai_pokechange.amx.
+The official btl_ai_pokechange AMX script is still useful as a reference, but normal trainer battles do not call it directly. The bridge now uses the engine's real switch candidates and applies our own scoring on top.
